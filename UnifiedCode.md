@@ -1,5 +1,5 @@
 #Combined codes
-  <span style="color:purple">Changes are marked in purple, including notes</span>.
+ >Changes are marked in blockquotes, including notes
 #Processing:
 
 //Processing Code
@@ -18,8 +18,8 @@
               max3 min2 - creates a crazy labrinth, but the fires tend to all burn out very rapidly.
               max5 min1 - tends to very quickly reach a stagnant but interesting state. 
             */
-<span style="color:purple">import oscP5.*;</span>.
-<span style="color:purple">import netP5.*;</span>.
+>import oscP5.*;
+>import netP5.*;
 
 
 // Size of cells
@@ -99,24 +99,24 @@ void draw() {
   for (int x=gridShift; x<gridW/cellSize; x++) {
     for (int y=0; y<gridH/cellSize; y++) {
       if (cells[x][y]==3) {
-        <span style="color:purple">OscMessage msg = new OscMessage("/firemsg");</span>
-        <span style="color:purple">msg.add();</span>
-        <span style="color:purple">osc.send(msg, supercollider);</span>
+        >OscMessage msg = new OscMessage("/firemsg");<
+        >msg.add();<
+        >osc.send(msg, supercollider);<
         fill(fire); // If alive 
       } else if (cells[x][y]==2) {
-        <span style="color:purple">OscMessage msg = new OscMessage("/earthmsg");</span>
-        <span style="color:purple">msg.add();</span>
-        <span style="color:purple">osc.send(msg, supercollider);</span>
+        >OscMessage msg = new OscMessage("/earthmsg");<
+        >msg.add();<
+        >osc.send(msg, supercollider);<
         fill(earth);
       } else if (cells[x][y]==1) {
-        <span style="color:purple">OscMessage msg = new OscMessage("/watermsg");</span>
-        <span style="color:purple">msg.add();</span>
-        <span style="color:purple">osc.send(msg, supercollider);</span>
+        >OscMessage msg = new OscMessage("/watermsg");<
+        >msg.add();<
+        >osc.send(msg, supercollider);<
         fill(water);
       } else {
-        <span style="color:purple">OscMessage msg = new OscMessage("/airmsg");</span>
-        <span style="color:purple">msg.add();</span>
-        <span style="color:purple">osc.send(msg, supercollider);</span>
+        >OscMessage msg = new OscMessage("/airmsg");<
+        >msg.add();<
+        >osc.send(msg, supercollider);<
          fill(air); // If air
 
       }
@@ -267,25 +267,25 @@ r.free;
 )
 
 
-<span style="color:purple">//*** Must boot this line FIRST!! And it will show your laptop’s address in post window. Remember to change the address in Processing to your own address
-NetAddr.localAddr
+>//*** Must boot this line FIRST!! And it will show your laptop’s address in post window. Remember to change the address in Processing to your own address
+>NetAddr.localAddr
 
 
-//The Synth(***) should be the recorded voice but it doesn’t work on my laptop so I guess we need to work it together
-(
-OSCdef('firesound',{
-	arg msg;
-	Synth(***,[pitch:msg[1]]*400 + 60) },"/firemsg");
-OSCdef('watersound',{
-	arg msg;
-	Synth(***,[frequency:msg[2]]) },"/watermsg");
-OSCdef('earthsound',{
-	arg msg;
-	Synth(***),[] },"/earthmsg");
-OSCdef('airsound',{
-	arg msg;
-	Synth(***),[]  },"/airmsg");
-)</span>
+>//The Synth(***) should be the recorded voice but it doesn’t work on my laptop so I guess we need to work it together
+>(
+>OSCdef('firesound',{
+>	arg msg;
+>	Synth(***,[pitch:msg[1]]*400 + 60) },"/firemsg");
+>OSCdef('watersound',{
+>	arg msg;
+>	Synth(***,[frequency:msg[2]]) },"/watermsg");
+>OSCdef('earthsound',{
+>	arg msg;
+>	Synth(***),[] },"/earthmsg");
+>OSCdef('airsound',{
+>	arg msg;
+>	Synth(***),[]  },"/airmsg");
+>)
 
 
 
