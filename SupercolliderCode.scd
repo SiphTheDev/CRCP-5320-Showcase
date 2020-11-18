@@ -1,3 +1,10 @@
+
+
+//Code 1
+
+
+
+
 //We’ll put our SuperCollider Code here, so we can all work on it.
 
 //please use headphone/earphones!
@@ -43,14 +50,25 @@ SynthDef.new(\delay, {
 ~delSynth = Synth(\delay, [\in, ~delBus, \out, 0], ~delGrp);
 )
 
+s.makeWindow;
+s.meter;
+s.record;
+s.stopRecording;
+
+
 s.freeAll;
 
+
+
+Code 2
 
 --------------
 Watch the demo video here
 https://drive.google.com/file/d/1mivnWMF2ACzK_VinCmKQ-ds1tJG2CnWz/view
 
 -------------
+
+
 
 //use headphones
 s.boot;
@@ -77,8 +95,18 @@ l = Synth(\loop, [\buf, b]);
 )
 r.set(\enable, 0); //stop recording, loop continues
 r.set(\enable, 1); //start recording, overwrite loop
+
+s.makeWindow;
+s.meter;
+s.record;
+s.stopRecording;
+
+
 (
 l.free;
 r.free;
+)
+
+
 )
 
