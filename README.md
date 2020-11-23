@@ -2,7 +2,7 @@
 ### CRCP 2020 Showcase
 
 #### Watch our introductory video here:
-https://www.youtube.com/watch?v=xEOX4Su6OFQ
+https://www.youtube.com/watch?v=SwfFQU2d4LM
 
 #### How to Use the Instrument:
 
