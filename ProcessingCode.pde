@@ -15,6 +15,9 @@
               max5 min1 - tends to very quickly reach a stagnant but interesting state. 
             */
 
+import oscP5.*;
+import netP5.*;
+
 // Size of cells
 int cellSize = 5;
 
@@ -45,6 +48,9 @@ int[][] cellsBuffer;
 // Pause
 boolean pause = false;
 
+OscP5 osc; //tool used to send messages
+NetAddress supercollider; //adress of where to send messages
+
 void setup() {
   size (760, 360);
 
@@ -52,9 +58,12 @@ void setup() {
   cells = new int[gridW+gridShift/cellSize][gridH/cellSize];
   cellsBuffer = new int[gridW+gridShift/cellSize][gridH/cellSize];
 
+  //Initialize osdc and supercollider
+  osc = new OscP5(this , 12000);
+  supercollider = new NetAddress("127.0.0.1",57120 );// ***The number here will vary on different laptops!!!! Run the “NetAddr.localAddr” in SC and it will show your address in the post window. For example, in my sc post window it shows “-> a NetAddr(127.0.0.1, 57120)”***
+
   // This stroke will draw the background grid
   stroke(48);
-
   noSmooth();
 
   // Initialization of cells
@@ -79,17 +88,40 @@ void setup() {
 
 void draw() {
 
+  fill(255);
+  ellipse(width-50, height/2, 80,80);
+  rectMode(CENTER);
+  rect(50, height/2, 15, 75);
+  fill (0);
+  ellipse(width-50, height/2, 65,65);
+  rect(50, height/2, 10, 70);
+  
+  
   //Draw grid
+  rectMode(CORNER);
   for (int x=gridShift; x<gridW/cellSize; x++) {
     for (int y=0; y<gridH/cellSize; y++) {
       if (cells[x][y]==3) {
+        OscMessage msg = new OscMessage("/airmsg");
+        msg.add();
+        osc.send(msg, supercollider);
         fill(fire); // If alive 
       } else if (cells[x][y]==2) {
+        OscMessage msg = new OscMessage("/airmsg");
+        msg.add();
+        osc.send(msg, supercollider);
         fill(earth);
       } else if (cells[x][y]==1) {
+        OscMessage msg = new OscMessage("/airmsg");
+        msg.add();
+        osc.send(msg, supercollider);  
         fill(water);
       } else {
-        fill(air); // If air
+        OscMessage msg = new OscMessage("/airmsg");
+        msg.add();
+        osc.send(msg, supercollider);
+         fill(air); // If air
+
       }
       rect (x*cellSize, y*cellSize, cellSize, cellSize);
     }
