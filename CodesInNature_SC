@@ -1,0 +1,36 @@
+//Codes in Nature: Sound Lens
+//Angelina Wang, Sisi Kang, Thomas Park
+
+//1. Boot server
+//2. Run the buffer
+//3. Run SynthDef to let us hear the sound
+//4. Run the Osc
+
+
+s.boot;
+a = Buffer.read(s, "/Users/angelinaw/Desktop/ASIM 5320/Final Project/sounds/air.aiff");
+
+(
+x= SynthDef("air-PlayBuf",{ arg out = 0, bufnum1;
+    Out.ar( out,
+        PlayBuf.ar(1, bufnum1, BufRateScale.kr(bufnum1))
+    )
+}).play(s,[\bufnum1, a]);
+)
+
+
+
+x.free; a.free;
+
+NetAddr.localAddr
+
+
+(
+OSCdef("air-PlayBuf",{
+	arg msg;
+	Synth("air-PlayBuf",[pitch:50.rrand(600)]);
+},"/airmsg");
+)
+
+
+
