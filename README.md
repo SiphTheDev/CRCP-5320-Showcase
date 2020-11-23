@@ -1,6 +1,9 @@
 # Codes in Nature: Sound Lens
 ### CRCP 2020 Showcase
 
+#### Watch our introductory video here:
+https://www.youtube.com/watch?v=xEOX4Su6OFQ
+
 #### How to Use the Instrument:
 
 1) Voice Recording
